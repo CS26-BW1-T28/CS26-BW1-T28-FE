@@ -1,11 +1,6 @@
 import React from 'react'
+import axios from 'axios'
 
-const Move = (props) => {
-  return(
-    <div>
-      
-    </div>
-  )
-}
 
-export default Move
+/* MOVE IS YOUR POST REQUEST  */
+
