@@ -1,22 +1,21 @@
 import React, {useState, useEffect} from "react";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios'
 import "./main.css";
 
 
 function Main() {
   const [marsMap, setMarsMap] = useState(null);
 
-  const initiateGame = e => {
-    e.preventDefault();
-    return axiosWithAuth()
-      .get("api/adv/mars_map")
+  useEffect(()=> {
+    axios
+      .get("https://cs1build.herokuapp.com/api/adv/init")
       .then(res => {
         console.log('MAIL CALL', res)
       })
       .catch(err => {
         console.log(err);
       });
-  };
+  }, [])
 
   return (
     <div className='main'>
@@ -25,8 +24,24 @@ function Main() {
 
       <div className='map_display'>
         <p>Test Room</p>
+        <p classname='not_room'></p>
+        <p classname='not_room'></p>
+        <p>Test Room</p>
+        <p>Test Room</p>
+        <p classname='not_room'></p>
+        <p classname='not_room'></p>
+        <p>Test Room</p>
+        <p>Test Room</p>
+        <p>Test Room</p>
+        <p classname='not_room'></p>
+        <p classname='not_room'></p>
+
         {/* {marsMap.forEach(chamber=> (
-           <p>{chamber.title}</p>
+          if (chamber){
+           <p classname='room'>{chamber.title}</p>
+          } else {
+            <p classname='not_room'></p>
+          }
         ))} */}
       </div>
 

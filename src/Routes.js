@@ -7,10 +7,6 @@ import Main from "./components/Main/Main";
 function Routes(props) {
   return (
     <div>
-        <div className='NavBar'>
-          <p href="./components/Signup/Signup.js" >Sign Up</p>
-          <p href="./components/Main/Main.js">Game</p>
-        </div>
       <BrowserRouter>
         <Switch>
           <Route exact path="/login" render={props => <Login {...props} />} />
