@@ -9,7 +9,7 @@ function Main() {
   const initiateGame = e => {
     e.preventDefault();
     return axiosWithAuth()
-      .get("api/adv/init")
+      .get("api/adv/mars_map")
       .then(res => {
         console.log('MAIL CALL', res)
       })

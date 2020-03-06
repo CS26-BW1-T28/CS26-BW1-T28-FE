@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form as FormikForm, Field, withFormik } from "formik";
+import {Link} from 'react-router-dom';
 import * as Yup from "yup";
 import { Form } from "semantic-ui-react";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
@@ -66,6 +67,11 @@ const Signup = props => {
             >
               SUBMIT
             </button>
+          </div>
+          <div>
+            <Link to="/login">
+              <div className="signup">Login</div>
+            </Link>
           </div>
         </FormikForm>
       </div>
