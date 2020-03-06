@@ -6,6 +6,10 @@ import axios from 'axios'
 export default class Init extends React.Component {
   
   state = {
+    id: '',
+    title: '',
+    description: '',
+    players: []
 
   }
 
@@ -18,7 +22,7 @@ export default class Init extends React.Component {
   render() {
     return(
       <div>
-        
+
       </div>
     )
   }
