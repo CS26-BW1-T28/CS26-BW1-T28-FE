@@ -3,7 +3,7 @@ import { Form as FormikForm, Field, withFormik } from "formik";
 import {Link} from 'react-router-dom';
 import * as Yup from "yup";
 import { Form } from "semantic-ui-react";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios'
 import "./signup.css";
 
 const Signup = props => {
@@ -96,10 +96,8 @@ const FormikLoginForm = withFormik({
   }),
   
   handleSubmit(values, { props, setStatus, handleSubmit: e }) {
-    // e.preventDefault()
-
-    return axiosWithAuth()
-      .post("api/registration/", values)
+    axios
+      .post("https://cs1build.herokuapp.com/api/registration/", values)
       .then(res => {
         console.log('Registered!');
         localStorage.setItem("token", res.data.key);

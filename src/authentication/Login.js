@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from '../components/utils/axiosWithAuth';
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import "./login.css";
 
@@ -18,8 +18,8 @@ export default function Login(props) {
 
   const submitHandler = (e, state) => {
     e.preventDefault();
-    return axiosWithAuth()
-      .post("api/login/", state)
+    axios
+      .post("https://cs1build.herokuapp.com/api/login/", state)
       .then(res => {
         console.log("Logging in");
         localStorage.setItem("token", res.data.key);
