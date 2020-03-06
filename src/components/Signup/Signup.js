@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Form as FormikForm, Field, withFormik } from "formik";
+import {Link} from 'react-router-dom';
 import * as Yup from "yup";
 import { Form } from "semantic-ui-react";
-// import { axiosWithAuth } from "../../utils/axiosWithAuth";
-// import UserContext from "../../contexts/UserContext";
-// import NavBarSignup from '../Nav/NavBarSignup';
-import axios from "axios";
+import axios from 'axios'
 import "./signup.css";
 
 const Signup = props => {
-  console.log(props);
-
-  //   const { getUser } = useContext(UserContext);
-  const [State, setState] = useState({});
-
+  const [state, setState] = useState({});
   const { errors, touched, values, handleSubmit, status } = props;
 
   useEffect(() => {
@@ -22,7 +16,6 @@ const Signup = props => {
 
   return (
     <>
-      {/* <NavBarSignup {...props} /> */}
       <div className="login-panel">
         <div className="login-title">
           <h1>SIGN UP</h1>
@@ -75,12 +68,18 @@ const Signup = props => {
               SUBMIT
             </button>
           </div>
+          <div>
+            <Link to="/login">
+              <div className="signup">Login</div>
+            </Link>
+          </div>
         </FormikForm>
       </div>
-      {/* <Footer /> */}
     </>
   );
 };
+
+
 const FormikLoginForm = withFormik({
   mapPropsToValues({ username, password1, password2 }) {
     return {
@@ -89,24 +88,26 @@ const FormikLoginForm = withFormik({
       password2: password2
     };
   },
+
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Please enter your username"),
     password1: Yup.string().required("Please enter your password"),
     password2: Yup.string().required("Please enter your password")
   }),
+  
   handleSubmit(values, { props, setStatus, handleSubmit: e }) {
-    // e.preventDefault()
-
     axios
-      .post("https://lambda-mud-test.herokuapp.com/api/registration/", values)
+      .post("https://cs1build.herokuapp.com/api/registration/", values)
       .then(res => {
-        console.log(res.data);
+        console.log('Registered!');
         localStorage.setItem("token", res.data.key);
         setStatus(res.data);
         const id = res.data.id;
-        props.history.push(`/`);
+        props.history.push(`/login`);
       })
       .catch(err => console.log(err.response));
   }
 })(Signup);
+
+
 export default FormikLoginForm;
