@@ -37,7 +37,6 @@ export default function Login(props) {
 
   return (
     <div className="wrapper">
-      <div className="signup-text">{/* <GlobalStyles /> */}</div>
       <form
         style={{
           textAlign: "center",
