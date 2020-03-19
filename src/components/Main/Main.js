@@ -1,19 +1,24 @@
 import React, {useState, useEffect} from "react";
-import axios from 'axios'
+import axiosWithAuth from '../utils/axiosWithAuth';
 import "./main.css";
 
 
 function Main() {
-  const [marsMap, setMarsMap] = useState(null);
+  const [marsChambers, setMarsChambers] = useState(null);
+  const [direction, setDirection] = useState('')
+  const [gameinfo, setGameInfo] = useState(null)
 
   useEffect(()=> {
-    axios
-      .get("https://cs1build.herokuapp.com/api/adv/init")
+    axiosWithAuth()
+      // .get("https://cs1build.herokuapp.com/api/adv/init")
+      .get("/api/adv/init")
       .then(res => {
         console.log('MAIL CALL', res)
+        setMarsChambers(res.data.mars_map)
+        setGameInfo(res)
       })
       .catch(err => {
-        console.log(err);
+        console.log('ERROR PINGING SERVER:', err);
       });
   }, [])
 
@@ -24,26 +29,26 @@ function Main() {
 
       <div className='map_display'>
         <p>Test Room</p>
-        <p classname='not_room'></p>
-        <p classname='not_room'></p>
+        <p className='not_room'></p>
+        <p className='not_room'></p>
         <p>Test Room</p>
-        <p>Test Room</p>
-        <p classname='not_room'></p>
-        <p classname='not_room'></p>
-        <p>Test Room</p>
-        <p>Test Room</p>
-        <p>Test Room</p>
-        <p classname='not_room'></p>
-        <p classname='not_room'></p>
 
         {/* {marsMap.forEach(chamber=> (
           if (chamber){
-           <p classname='room'>{chamber.title}</p>
+           <p className='room'>{chamber.title}</p>
           } else {
-            <p classname='not_room'></p>
+            <p className='not_room'></p>
           }
         ))} */}
       </div>
+
+      {/* <div className='controls'>
+        <input
+          value={direction}
+          setDirection={setDirection}
+          move={move}
+        />
+      </div> */}
 
     </div>
   );
