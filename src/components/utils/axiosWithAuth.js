@@ -6,10 +6,11 @@ const axiosWithAuth = () => {
   return axios.create({
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Token ${token}`
+      Authorization: `csrftoken ${token}`
     },
     baseURL: "https://cs1build.herokuapp.com"
   });
 };
 
  export default axiosWithAuth
+      // Authorization: `Token ${token}`

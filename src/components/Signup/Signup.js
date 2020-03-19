@@ -7,11 +7,11 @@ import axios from 'axios'
 import "./signup.css";
 
 const Signup = props => {
-  const [state, setState] = useState({});
+  const [user, setUser] = useState({});
   const { errors, touched, values, handleSubmit, status } = props;
 
   useEffect(() => {
-    setState(status);
+    setUser(status);
   }, [status]);
 
   return (
@@ -44,7 +44,6 @@ const Signup = props => {
                 data-testid="password1"
                 placeholder="Password"
               />
-              {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
             </Form.Field>
           </div>{" "}
           <div>
@@ -56,7 +55,6 @@ const Signup = props => {
                 data-testid="password2"
                 placeholder="Confirm Password"
               />
-              {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
             </Form.Field>
           </div>
           <div>
@@ -70,7 +68,7 @@ const Signup = props => {
           </div>
           <div>
             <Link to="/login">
-              <div className="signup">Login</div>
+              <div className="signup">Already have an Account?</div>
             </Link>
           </div>
         </FormikForm>
@@ -102,7 +100,6 @@ const FormikLoginForm = withFormik({
         console.log('Registered!');
         localStorage.setItem("token", res.data.key);
         setStatus(res.data);
-        const id = res.data.id;
         props.history.push(`/login`);
       })
       .catch(err => console.log(err.response));
