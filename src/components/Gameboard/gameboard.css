@@ -1,26 +1,26 @@
 
-
 .map_display{
-    height: 60vh;
-    width: 65vw;
-    border: 1px solid rgb(182, 37, 1);
-    margin: auto;
-    background: url('http://marsxplr.com/_upl/Christian4Macfloor-orig.jpg ');
-    display: flex;
-    flex-wrap: wrap;
-  }
+  height: 60vh;
+  width: 66vw;
+  margin: auto;
+  background: url('http://marsxplr.com/_upl/Christian4Macfloor-orig.jpg ');
+}
+
+.map_display .row{
+  margin: auto;
+  height: 20vh;
+  width: 65vw;
+  border: 2px solid pink;
+}
   
-.map_display p{
-    padding-top: 20px;
-    width: 24%;
-    height: 25%;
-    background: brown;
-    border: 4px solid rgb(92, 13, 13);
+.map_display .col-xs{
+    width: 22vw;
+    height: 20vh;
     color: #fff;
     font-size: .7rem;
     text-align: center;
   }
 
-.map_display p .not_room{
-    background: rgb(92, 13, 13);
+  .isRoom{
+    background-color: rgb(92, 13, 13);
   }

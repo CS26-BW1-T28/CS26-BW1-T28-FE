@@ -1,16 +1,12 @@
 import React from 'react'
+import GameMap from './GameMap'
 import './gameboard.css'
 
 
 function Gameboard(props){
 
     return(
-        <div className='map_display'>
-            <p>Test Room</p>
-            <p className='not_room'></p>
-            <p className='not_room'></p>
-            <p>Test Room</p>
-        </div>
+        <GameMap/>
     )
 }
 
