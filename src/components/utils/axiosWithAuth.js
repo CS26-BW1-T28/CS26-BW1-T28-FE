@@ -8,7 +8,7 @@ const axiosWithAuth = () => {
       'Content-Type': 'application/json',
       Authorization: `Token ${token}`
     },
-    baseURL: "https://cs1build.herokuapp.com/api/registration/"
+    baseURL: "https://cs1build.herokuapp.com"
   });
 };
 
