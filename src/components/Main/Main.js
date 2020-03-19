@@ -10,7 +10,6 @@ function Main() {
 
   useEffect(()=> {
     axiosWithAuth()
-      // .get("https://cs1build.herokuapp.com/api/adv/init")
       .get("/api/adv/init")
       .then(res => {
         console.log('MAIL CALL', res)
