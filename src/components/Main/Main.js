@@ -18,7 +18,7 @@ function Main() {
       .then(res => {
         console.log('MAIL CALL', res)
         setMarsChambers(res.data.mars_map)
-        setGameInfo(res)
+        setGameInfo(res.data)
         setLoading(false)
       })
       .catch(err => {
@@ -38,7 +38,7 @@ function Main() {
 
       {loadErr === true && ( <h3>Error Loading Game</h3> )}
 
-      {loading=== false && ( <Gameboard gameinfo={gameinfo}/> )}
+      {loading=== false && ( <Gameboard gameinfo={gameinfo} marsChambers={marsChambers}/> )}
 
     </div>
   );

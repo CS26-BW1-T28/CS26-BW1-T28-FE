@@ -1,5 +1,13 @@
+.gameBoard{
+  position: relative;
+  height: 60vh;
+  width: 66vw;
+  margin: auto;
+}
+
 
 .map_display{
+  position: relative;
   height: 60vh;
   width: 66vw;
   margin: auto;

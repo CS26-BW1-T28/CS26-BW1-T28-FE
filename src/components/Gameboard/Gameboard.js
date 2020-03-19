@@ -1,12 +1,16 @@
 import React from 'react'
 import GameMap from './GameMap'
+import Player from '../Player/Player'
 import './gameboard.css'
 
 
-function Gameboard(props){
+function Gameboard({marsChambers, gameInfo}){
 
     return(
-        <GameMap/>
+        <div className='gameBoard'>
+            <GameMap marsChambers={marsChambers} gameInfo={gameInfo}/>
+            <Player gameInfo={gameInfo}/>
+        </div>
     )
 }
 
