@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const axiosWithAuth = () => {
+const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
 
   return axios.create({
@@ -8,8 +8,9 @@ export const axiosWithAuth = () => {
       'Content-Type': 'application/json',
       Authorization: `Token ${token}`
     },
-    // baseURL: 'http://127.0.0.1:8000/'
-    // baseURL: 'https://cs1build.herokuapp.com/api/'
-    baseURL: 'https://lambda-mud-test.herokuapp.com/'
+    baseURL: 'http://127.0.0.1:8000/'
+    // baseURL: 'https://lambda-mud-test.herokuapp.com/'
   });
 };
+
+ export default axiosWithAuth

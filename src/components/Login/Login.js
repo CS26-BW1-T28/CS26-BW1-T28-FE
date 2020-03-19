@@ -4,31 +4,32 @@ import { Link } from "react-router-dom";
 import "./login.css";
 
 export default function Login(props) {
-  const [state, setState] = useState({
+  const [user, setUser] = useState({
     username: "",
     password: ""
   });
 
   const changeHandler = e => {
-    setState({
-      ...state,
+    setUser({
+      ...user,
       [e.target.name]: e.target.value
     });
   };
 
-  const submitHandler = (e, state) => {
+  const submitHandler = (e, user) => {
     e.preventDefault();
     axios
-      .post("https://cs1build.herokuapp.com/api/login/", state)
+      .post("https://cs1build.herokuapp.com/api/login/", user)
       .then(res => {
         console.log("Logging in");
         localStorage.setItem("token", res.data.key);
+        localStorage.setItem("user", user.username);
         props.history.push("/game");
       })
       .catch(err => {
         console.log(err);
       });
-    setState({
+    setUser({
       username: "",
       password: ""
     });
@@ -40,12 +41,11 @@ export default function Login(props) {
       <form
         style={{
           textAlign: "center",
-          height: "620px",
           width: "100%",
           height: "50vh",
           zIndex: '5'
         }}
-        onSubmit={e => submitHandler(e, state)}
+        onSubmit={e => submitHandler(e, user)}
       >
         <div>
           <div className="title"> Sign in to your account </div>
@@ -55,7 +55,7 @@ export default function Login(props) {
             type="text"
             name="username"
             placeholder="Enter Username"
-            value={state.username}
+            value={user.username}
             onChange={changeHandler}
             required
           />
@@ -65,7 +65,7 @@ export default function Login(props) {
           <input
             type="password"
             name="password"
-            value={state.password}
+            value={user.password}
             onChange={changeHandler}
             placeholder="Enter Password"
             required
@@ -74,7 +74,7 @@ export default function Login(props) {
         <button
           className="signup-btn"
           style={
-            state.email && state.password
+            user.username && user.password
               ? { backgroundColor: "blue" }
               : {
                   color: "black",
