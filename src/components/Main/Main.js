@@ -4,22 +4,24 @@ import "./main.css";
 
 
 function Main() {
-  const [marsChambers, setMarsChambers] = useState(null);
-  const [direction, setDirection] = useState('')
-  const [gameinfo, setGameInfo] = useState(null)
+  // const [marsChambers, setMarsChambers] = useState(null);
+  // const [gameinfo, setGameInfo] = useState(null)
+  // const [direction, setDirection] = useState('')
 
   useEffect(()=> {
     axiosWithAuth()
       .get("/api/adv/init")
       .then(res => {
         console.log('MAIL CALL', res)
-        setMarsChambers(res.data.mars_map)
-        setGameInfo(res)
+        // setMarsChambers(res.data.mars_map)
+        // setGameInfo(res)
       })
       .catch(err => {
         console.log('ERROR PINGING SERVER:', err);
       });
   }, [])
+
+  console.log('localStorage', localStorage)
 
   return (
     <div className='main'>
@@ -31,23 +33,7 @@ function Main() {
         <p className='not_room'></p>
         <p className='not_room'></p>
         <p>Test Room</p>
-
-        {/* {marsMap.forEach(chamber=> (
-          if (chamber){
-           <p className='room'>{chamber.title}</p>
-          } else {
-            <p className='not_room'></p>
-          }
-        ))} */}
       </div>
-
-      {/* <div className='controls'>
-        <input
-          value={direction}
-          setDirection={setDirection}
-          move={move}
-        />
-      </div> */}
 
     </div>
   );
