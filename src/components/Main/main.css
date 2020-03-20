@@ -25,9 +25,23 @@ h3{
     width: 40%;
 }
 
+
 img{
     position: fixed;
     left: 0;
     bottom: 5vh;
     height: 30vh;
+}
+
+p{
+    width: 40vw;
+    height: 15vh;
+    font-family: 'Share Tech Mono', monospace;
+    color: rgb(4, 165, 4);
+    background: #000;
+    position: fixed;
+    bottom: 10vh;
+    left: 20vw;
+    padding: 10px;
+    text-align: left;
 }
