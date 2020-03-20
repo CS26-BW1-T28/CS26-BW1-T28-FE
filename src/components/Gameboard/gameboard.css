@@ -9,6 +9,8 @@
 
 .map_display{
   position: relative;
+  display: flex;
+
   height: 60vh;
   width: 66vw;
   margin: auto;
@@ -32,6 +34,24 @@
     text-align: center;
   }
 
-  .isRoom{
-    background-color: rgb(92, 13, 13);
-  }
+.isRoom{
+  background-color: rgb(92, 13, 13);
+}
+
+.tile{
+  display: flex;
+}
+
+.path{
+  background-color: rgb(92, 13, 13);
+}
+
+.metal{
+  background-image: url('../../images/metal-1.jpg')
+}
+.crystal{
+  background-image: url('../../images/crystal.jpg')
+}
+.lava{
+  background-image: url('../../images/lava.jpg')
+}

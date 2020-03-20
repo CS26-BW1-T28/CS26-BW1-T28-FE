@@ -1,6 +1,10 @@
 import React from 'react'
 
 const moveInput = ({move, setDirection, direction}) => {
+    const player_size = 80;
+    const map_width = 800;
+    const map_height = 480;
+
     const handleChange = e => {
         setDirection(e.target.value)
     };
@@ -53,6 +57,16 @@ const moveInput = ({move, setDirection, direction}) => {
             default:
                 console.log(e.keyCode)
         }
+    }
+
+    function mapBounders(oldPos, newPos){
+        return (newPos[0] >= 0 && newPos[0] <= map_width - player_size) &&
+            (newPos[1] >= 0 && newPos[1] <= map_height)
+            ? newPos : oldPos
+    }
+
+    function observeNotAPath(oldPos, newPos){
+        return 
     }
 
     window.addEventListener('keydown', e => { handleKeyDown(e) })
