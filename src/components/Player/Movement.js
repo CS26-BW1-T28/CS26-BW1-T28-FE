@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
-import character from '../../images/astronaut-1.png'
+import React from 'react'
 
+const moveInput = ({move, setDirection, direction}) => {
+    const handleChange = e => {
+        setDirection(e.target.value)
+    };
 
-function handleMove(player){
     function getNewPosition(direction){
         // const oldPos = state.player.position
         const oldTop = player.top
@@ -34,15 +36,20 @@ function handleMove(player){
 
     function handleKeyDown(e){
         e.preventDefault()
+
         switch(e.keyCode){
             case 37:
                 return directionMove('West')
+
             case 38:
                 return directionMove('North')
+
             case 39:
                 return directionMove('East')
+
             case 40:
                 return directionMove('South')
+
             default:
                 console.log(e.keyCode)
         }
@@ -50,25 +57,18 @@ function handleMove(player){
 
     window.addEventListener('keydown', e => { handleKeyDown(e) })
 
-}
-
-function Player({gameInfo}){
-    const [playerInfo, setPlayer] = useState(gameInfo)
-
     return(
-        <div
-            style={{
-                position: 'absolute',
-                top: 0, //y index
-                left: 0, //x index
-                backgroundImage: `url('${character}')`,
-                backgroundPosition: '0 0',
-                width: '80px',
-                height: '80px',
-                backgroundSize: 'contain'
-            }}
-        />
+        <div>
+            <form onSubmot={e=> move(e, direction)}>
+                <input
+                onChange={handleChange}
+                value={direction}
+                />
+            </form>
+        </div>
+
     )
+
 }
 
-export default Player;
+export default moveInput;

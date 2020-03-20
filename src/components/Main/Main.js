@@ -6,9 +6,10 @@ import astronaut from '../../images/astronaut-front.png'
 
 
 function Main() {
-  const [marsChambers, setMarsChambers] = useState(null);
-  const [gameinfo, setGameInfo] = useState(null)
+  const [marsChambers, setMarsChambers] = useState();
+  const [gameinfo, setGameInfo] = useState()
   const [direction, setDirection] = useState('')
+  const [commands, setCommands] = useState()
   const [loading, setLoading] = useState(true)
   const [loadErr, setLoadErr] = useState(false)
 
@@ -17,9 +18,15 @@ function Main() {
       .get("/api/adv/init")
       .then(res => {
         console.log('MAIL CALL', res)
+        let moveChamber = {
+          type: 'chamber',
+          text: `${res.data.description}`
+        }
         setMarsChambers(res.data.mars_map)
         setGameInfo(res.data)
         setLoading(false)
+        setCommands([moveChamber])
+
       })
       .catch(err => {
         console.log('ERROR PINGING SERVER:', err);
@@ -27,12 +34,44 @@ function Main() {
       });
   }, [])
 
-  console.log('localStorage', localStorage)
+  useEffect((e, cardinal)=> {
+    const direction = { direction: `${cardinal}`}
+    axiosWithAuth()
+    .post('api/adv/move', direction)
+    .then(res=> {
+      let movePlayer = {
+          type: 'move',
+          text: `Heading ${
+            cardinal === 'n'
+              ? 'north'
+              : cardinal === 's'
+              ? 'south'
+              : cardinal === 'w'
+              ? 'west'
+              : cardinal === 'e'
+              ? 'east'
+              : '... nowhere'
+          }`
+      }
+
+      let moveChamber = {
+          type: 'chamber',
+          text: `${res.data.description}`
+      }
+      setGameInfo(res.data)
+      setCommands([...commands, movePlayer, moveChamber])
+      setDirection('')
+    })
+    .catch(err=> console.log('Error with Move Post', err))
+  })
 
   return (
     <div className='main'>
       <h1>Mars Explorer</h1>
-      <img src={astronaut} alt='astronaut cartoon'/>
+      <div className='instructions-box'>
+        <img src={astronaut} alt='astronaut cartoon'/>
+        {loading=== false && ( <p>Welcome {gameinfo.name}! Use the arrow keys to move your player through the map.</p> )}
+      </div>
 
       {loading === true && ( <h3>Loading...</h3> )}
 

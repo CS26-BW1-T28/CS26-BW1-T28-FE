@@ -5,6 +5,13 @@ function GameMap({marsChambers, gameInfo}){
 
     const validChambers=[]
     const adjacentChambers = marsChambers.filter(room=> validChambers.includes(room.id))
+    const tiles = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ],
+    ] // 10x40
 
     marsChambers.forEach(room=> {
         const directions=['n_to', 's_to', 'e_to', 'w_to']
@@ -25,12 +32,12 @@ function GameMap({marsChambers, gameInfo}){
                 </Row>
                 <Row>
                     <Col xs></Col>
-                    <Col xs className='isRoom'>Test Room</Col>
+                    <Col xs className='isRoom'></Col>
                     <Col xs></Col>
                 </Row>
                 <Row>
                     <Col xs></Col>
-                    <Col xs className='isRoom'>Test Room</Col>
+                    <Col xs className='isRoom'></Col>
                     <Col xs></Col>
                 </Row>
             </Grid>

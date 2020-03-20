@@ -3,6 +3,7 @@
   height: 60vh;
   width: 66vw;
   margin: auto;
+  background: url('http://marsxplr.com/_upl/Christian4Macfloor-orig.jpg ');
 }
 
 
@@ -11,14 +12,16 @@
   height: 60vh;
   width: 66vw;
   margin: auto;
-  background: url('http://marsxplr.com/_upl/Christian4Macfloor-orig.jpg ');
+}
+
+.map_display .container-fluid{
+  padding: 0 0;
 }
 
 .map_display .row{
   margin: auto;
   height: 20vh;
-  width: 65vw;
-  border: 2px solid pink;
+  width: 66vw;
 }
   
 .map_display .col-xs{
