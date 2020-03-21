@@ -1,15 +1,17 @@
 import React from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid';
+
 
 function getTileImg(type){
     switch(type){
         case 1:
             return 'path'
+        case 0:
+            return 'dirt'
         case 4:
             return 'metal'
         case 5:
             return 'crystal'
-        case 0:
+        case 6:
             return 'lava'
     }
 }
@@ -20,7 +22,7 @@ function MapTile(props){
         style={{
             height: '80px',
             width: '80px',
-        }}>{props.value}</div>
+        }}/>
 }
 
 
@@ -49,7 +51,7 @@ function GameMap({marsChambers, gameInfo}){
         [0, 0, 0, 1, 1, 1, 1, 1, ],
         [0, 0, 0, 0, 0, 1, 0, 0, ],
         [0, 0, 0, 0, 0, 0, 0, 1, ],
-    ] // 10x6
+    ] 
 
     marsChambers.forEach(room=> {
         const directions=['n_to', 's_to', 'e_to', 'w_to']
@@ -60,7 +62,7 @@ function GameMap({marsChambers, gameInfo}){
         })
     })   
 
-    // const graph = {
+    // const tiles = {
     //     chambers: [
     //         ...marsChambers.map(chamber=> {
     //             return {
@@ -88,23 +90,6 @@ function GameMap({marsChambers, gameInfo}){
 
     return(
         <div className='map_display'>
-            {/* <Grid fluid>
-                <Row >
-                    <Col xs></Col>
-                    <Col xs></Col>
-                    <Col xs></Col>
-                </Row>
-                <Row>
-                    <Col xs></Col>
-                    <Col xs className='isRoom'></Col>
-                    <Col xs></Col>
-                </Row>
-                <Row>
-                    <Col xs></Col>
-                    <Col xs className='isRoom'></Col>
-                    <Col xs></Col>
-                </Row>
-            </Grid> */}
 
             {
                 tiles.map(row=> <MapRow tiles={row}/>)
