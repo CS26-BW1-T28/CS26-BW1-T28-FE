@@ -87,7 +87,6 @@ function Main() {
         <Gameboard 
           gameinfo={gameinfo} 
           marsChambers={marsChambers} 
-          move={handleMove} 
           direction={direction} 
           setDirection={setDirection}
         /> 
