@@ -15,20 +15,16 @@ const Signup = props => {
   }, [status]);
 
   return (
-    <>
-      <div className="login-panel">
-        <div className="login-title">
-          <h1>SIGN UP</h1>
-        </div>
-        <FormikForm use="semantic-ui-react" className="login-form">
+      <div className="login-pg">
+        <FormikForm use="semantic-ui-react" >
+        <h2>SIGNUP</h2>
           <div>
             <Form.Field>
+              <label> USERNAME: </label>
               <Field
-                className="login-input one"
                 type="username"
                 name="username"
                 data-testid="username"
-                placeholder="Username"
               />
               {touched.username && errors.username && (
                 <p className="error">{errors.username}</p>
@@ -37,43 +33,29 @@ const Signup = props => {
           </div>
           <div>
             <Form.Field>
+              <label> PASSWORD: </label>
               <Field
-                className="login-input"
                 type="password"
                 name="password1"
                 data-testid="password1"
-                placeholder="Password"
               />
             </Form.Field>
           </div>{" "}
           <div>
             <Form.Field>
+              <label> CONFIRM PASSWORD: </label>
               <Field
-                className="login-input"
                 type="password"
                 name="password2"
                 data-testid="password2"
-                placeholder="Confirm Password"
               />
             </Form.Field>
           </div>
-          <div>
-            <button
-              className="login-button"
-              onClick={handleSubmit}
-              type="submit"
-            >
-              SUBMIT
-            </button>
-          </div>
-          <div>
-            <Link to="/login">
-              <div className="signup">Already have an Account?</div>
-            </Link>
-          </div>
+
+          <button onSubmit={handleSubmit}> SUBMIT </button>
+          <button><Link to="/login" className="signup">LOGIN</Link></button>
         </FormikForm>
       </div>
-    </>
   );
 };
 
@@ -90,7 +72,7 @@ const FormikLoginForm = withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Please enter your username"),
     password1: Yup.string().required("Please enter your password"),
-    password2: Yup.string().required("Please enter your password")
+    password2: Yup.string().required("Please confirm your password")
   }),
   
   handleSubmit(values, { props, setStatus, handleSubmit: e }) {
@@ -100,7 +82,7 @@ const FormikLoginForm = withFormik({
         console.log('Registered!');
         localStorage.setItem("token", res.data.key);
         setStatus(res.data);
-        props.history.push(`/login`);
+        props.history.push(`/game`);
       })
       .catch(err => console.log(err.response));
   }

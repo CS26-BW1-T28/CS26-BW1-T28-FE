@@ -3,35 +3,37 @@
   height: 60vh;
   width: 66vw;
   margin: auto;
-  background: url('http://marsxplr.com/_upl/Christian4Macfloor-orig.jpg ');
-}
+  /* border: 1px solid green; */
+} 
+/* needs set width, height because this is what player is set relative to */
 
 
 .map_display{
   position: relative;
-  height: 60vh;
-  width: 66vw;
+  display: flex;
   margin: auto;
+  /* border: 1px solid yellow; */
 }
 
-.map_display .container-fluid{
-  padding: 0 0;
+
+.tile{
+  display: flex;
 }
 
-.map_display .row{
-  margin: auto;
-  height: 20vh;
-  width: 66vw;
+.path{
+  background-color: rgb(92, 13, 13);
 }
-  
-.map_display .col-xs{
-    width: 22vw;
-    height: 20vh;
-    color: #fff;
-    font-size: .7rem;
-    text-align: center;
-  }
 
-  .isRoom{
-    background-color: rgb(92, 13, 13);
-  }
+.dirt{
+  background-image: url('../../images/red-dirt.jpg');
+}
+
+.metal{
+  background-image: url('../../images/metal-1.jpg')
+}
+.crystal{
+  background-image: url('../../images/crystal.jpg')
+}
+.lava{
+  background-image: url('../../images/lava.jpg')
+}

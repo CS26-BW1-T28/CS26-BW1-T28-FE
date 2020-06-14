@@ -4,8 +4,8 @@ import Player from '../Player/Player'
 import './gameboard.css'
 
 
-function Gameboard({marsChambers, gameInfo}){
 
+function Gameboard({marsChambers, gameInfo, direction, setDirection, move}){   
     return(
         <div className='gameBoard'>
             <GameMap marsChambers={marsChambers} gameInfo={gameInfo}/>

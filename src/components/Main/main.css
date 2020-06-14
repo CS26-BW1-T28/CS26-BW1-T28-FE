@@ -34,9 +34,8 @@ img{
 }
 
 p{
-    width: 40vw;
-    height: 15vh;
     font-family: 'Share Tech Mono', monospace;
+    font-size: 1.25rem;
     color: rgb(4, 165, 4);
     background: #000;
     position: fixed;
@@ -44,4 +43,5 @@ p{
     left: 20vw;
     padding: 10px;
     text-align: left;
+    max-width: 800px;
 }

@@ -8,91 +8,54 @@ export default function Login(props) {
     username: "",
     password: ""
   });
+  const [loginError, setError] = useState(false)
 
   const changeHandler = e => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value
-    });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const submitHandler = (e, user) => {
     e.preventDefault();
-    axios
-      .post("https://cs1build.herokuapp.com/api/login/", user)
+    axios.post("https://cs1build.herokuapp.com/api/login/", user)
       .then(res => {
-        console.log("Logging in");
         localStorage.setItem("token", res.data.key);
         localStorage.setItem("user", user.username);
         props.history.push("/game");
       })
       .catch(err => {
-        console.log(err);
+        console.log('login error', err);
+        setError(true)
       });
-    setUser({
-      username: "",
-      password: ""
-    });
   };
 
   return (
-    <div className="wrapper">
-      <form
-        style={{
-          textAlign: "center",
-          width: "100%",
-          height: "50vh",
-          zIndex: '5'
-        }}
-        onSubmit={e => submitHandler(e, user)}
-      >
-        <div>
-          <div className="title"> Sign in to your account </div>
+    <div className="login-pg">
+      <form onSubmit={e => submitHandler(e, user)}>
+        <h2> WELCOME, EXPLORER </h2>
 
-          <div className="label"> Username </div>
+        <div>
+          <label> USERNAME: </label>
           <input
             type="text"
             name="username"
-            placeholder="Enter Username"
             value={user.username}
             onChange={changeHandler}
             required
           />
         </div>
         <div>
-          <div className="label"> Password </div>
+          <label> PASSWORD: </label>
           <input
             type="password"
             name="password"
             value={user.password}
             onChange={changeHandler}
-            placeholder="Enter Password"
             required
           />
         </div>
-        <button
-          className="signup-btn"
-          style={
-            user.username && user.password
-              ? { backgroundColor: "blue" }
-              : {
-                  color: "black",
-                  backgroundColor: "f3f5f1",
-                  fontWeight: "bold",
-                  marginTop: "20px"
-                }
-          }
-        >
-          Login
-        </button>
-        <div>
-          <div className="bottom">Don't have an account?</div>
-          <div>
-            <Link to="/registration">
-              <div className="signup">SIGN UP</div>
-            </Link>
-          </div>
-        </div>
+        {loginError === true && ( <p>Error logging in. Try again. </p>)}
+        <button onSubmit={e => submitHandler(e, user)}> LOGIN </button>
+        <button><Link to="/registration" className="signup">SIGNUP</Link></button>
       </form>
     </div>
   );
