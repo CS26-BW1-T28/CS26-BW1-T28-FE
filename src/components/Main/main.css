@@ -1,23 +1,15 @@
 .main{
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     z-index: 0;
+    margin: 10vh auto;
     position: relative;
-}
-
-h1{
-    z-index: 2;
-    color: red;
-    margin: auto;
-    padding-top: 5vh;
-    font-family: 'Sen', sans-serif;
-    text-shadow: 3px 3px 4px rgb(109, 1, 1);
+    font-family: 'Share Tech Mono', monospace;
 }
 
 h3{
     font-size: 1rem;
-    font-family: 'Share Tech Mono', monospace;
-    color: white;
+    color: #36ca09;
     padding: 10px 20px;
     background: black;
     margin: 5vh auto;
@@ -34,14 +26,13 @@ img{
 }
 
 p{
-    font-family: 'Share Tech Mono', monospace;
     font-size: 1.25rem;
-    color: rgb(4, 165, 4);
-    background: #000;
-    position: fixed;
-    bottom: 10vh;
-    left: 20vw;
+    color: #36ca09;
+    background-image: url('../../images/terminal-screen.png');
+    background-position: center center;
     padding: 10px;
     text-align: left;
-    max-width: 800px;
+    height: 100px;
+    width: 780px;
+    margin: 10px auto;
 }
