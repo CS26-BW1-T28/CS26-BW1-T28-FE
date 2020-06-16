@@ -12,7 +12,7 @@ import character from '../../images/astronaut-1.png'
 
 */
 
-function Player(){
+function Player(props){
     const [playerTop, setPlayerTop] = useState(0)
     const [playerLeft, setPlayerLeft] = useState(0)
     const [direction, setDirection] = useState('')
@@ -28,11 +28,9 @@ function Player(){
 
         console.log(`Current Pos: ${oldPos}\nTarget Pos: ${newPos}`)
         
-        if( mapBounderies(oldPos, newPos) === newPos ){
-            console.log('map result', mapBounderies(oldPos, newPos))
+        if( mapBounderies(oldPos, newPos)===newPos && pathBoundaries(oldPos, newPos, props) ){
             return handleMovePlayer(e) 
         } else {
-            console.log('map result',  mapBounderies(oldPos, newPos))
             return handleNextScreen(e) 
         }
     }
@@ -60,16 +58,12 @@ function Player(){
         // [e\w, n\s]
         switch(e.keyCode){
             case 37: //west
-                console.log('W', [ oldPos[0]-80, oldPos[1] ])
                 return [ oldPos[0]-80, oldPos[1] ]
             case 38: //north
-                console.log('N', [ oldPos[0], oldPos[1]-80 ])
                 return [ oldPos[0], oldPos[1]-80 ]
             case 39: //east
-                console.log('E', [ oldPos[0]+80, oldPos[1] ])
                 return [ oldPos[0]+80, oldPos[1] ]
             case 40: //south
-                console.log('S', [ oldPos[0], oldPos[1]+80 ])
                 return [ oldPos[0], oldPos[1]+80 ]
         }
     }
@@ -77,23 +71,18 @@ function Player(){
     // Resets player to start other side when entering next level.
     function mapBounderies(oldPos, newPos){
         if (newPos[0] === -80){ //too far west
-            console.log('boo')
             return [map_width, oldPos[1]] 
         }
         else if(newPos[1] === -80){ //too far north
-            console.log('boo')
             return [map_height, oldPos[1]] 
         }
         else if (newPos[0] === map_width){ //too far east
-            console.log('boo')
             return [0, oldPos[1]]
         }
         else if (newPos[1] === map_height){ //too far south
-            console.log('boo')
             return [oldPos[0], 0]
         }
         else {
-            console.log('boo')
             return newPos
         } 
     }
@@ -116,21 +105,25 @@ function Player(){
         e.preventDefault()
         switch(e.keyCode){
             case 37: // too far west
-                console.log(`Returning Zone West`)
                 return  setPlayerLeft( map_width-player_size )
             case 38: // too far north
-                console.log(`Returning Zone North`)
                 return  setPlayerTop( map_height-player_size )
             case 39: // too far east
-                console.log(`New Zone East`)
                 return  setPlayerLeft( 0 )
             case 40: // too far south
-                console.log(`New Zone South`)
                 return  setPlayerTop( 0 )
         }
         
     }
     
+    function pathBoundaries(oldPos, newPos, props){
+        console.log(props)
+        // const tiles = props.map.tiles
+        // const y = newPos[1] / 80
+        // const x = newPos[0] / 80
+        // const nextTile = tiles[y][x]
+        // return nextTile === 0 ? newPos : oldPos
+    }
 
     // It all comes into action here
     window.addEventListener('keyup', (e) => { firstMove(e) }, 200 )
@@ -157,11 +150,3 @@ export default Player;
 
 
 
-// function pathBoundaries(oldPos, newPos, tiles){
-    // const tiles = props.map.tiles
-    // const y = newPos[1] / 80
-    // const x = newPos[0] / 80
-    // const nextTile = tiles[y][x]
-    // return nextTile === 0
-    // return true
-// }
