@@ -1,27 +1,26 @@
 .gameBoard{
   position: relative;
-  height: 60vh;
-  width: 66vw;
+  height: 480px;
+  width: 800px;
   margin: auto;
-  /* border: 1px solid green; */
 } 
 /* needs set width, height because this is what player is set relative to */
 
 
 .map_display{
   position: relative;
-  display: flex;
+  display: flex; /*This sets the tiles as rows*/
   margin: auto;
-  /* border: 1px solid yellow; */
+  height: 480px;
+  width: 800px;
 }
-
 
 .tile{
   display: flex;
 }
 
 .path{
-  background-color: rgb(92, 13, 13);
+  background-color: #5c0d0d;
 }
 
 .dirt{

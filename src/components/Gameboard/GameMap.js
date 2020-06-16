@@ -34,26 +34,22 @@ function MapRow(props){
 
 function GameMap({marsChambers, gameInfo}){
     const player_size = 80;
-    const map_width = 800;
-    const map_height = 480;
+    const map_width = 480;
+    const map_height = 800;
 
     const validChambers=[]
     const adjacentChambers = marsChambers.filter(room=> validChambers.includes(room.id))
     const tiles = [
-        [1, 0, 0, 0, 0, 0, 0, 0, ],
-        [1, 1, 0, 0, 0, 0, 0, 0, ],
-        [0, 1, 1, 1, 0, 0, 0, 0, ],
-        [0, 0, 0, 1, 0, 0, 0, 0, ],
-        [0, 0, 1, 1, 1, 1, 1, 1, ],
-        [0, 0, 1, 0, 0, 0, 1, 0, ],
-        [0, 0, 1, 0, 0, 0, 1, 0, ],
-        [0, 0, 1, 1, 0, 0, 0, 1, ],
-        [0, 0, 0, 1, 1, 1, 1, 1, ],
-        [0, 0, 0, 0, 0, 1, 1, 0, ],
-        [0, 0, 0, 0, 0, 0, 1, 1, ],
-        [0, 0, 0, 0, 0, 0, 0, 1, ],
-        [0, 0, 0, 0, 0, 0, 0, 1, ],
-        [0, 0, 0, 0, 0, 0, 0, 1, ],
+        [1, 0, 0, 0, 0, 0 ],
+        [1, 1, 0, 0, 0, 0 ],
+        [0, 1, 1, 1, 0, 0 ],
+        [0, 0, 0, 1, 0, 0 ],
+        [0, 0, 1, 1, 1, 1 ],
+        [0, 0, 1, 0, 0, 0 ],
+        [0, 0, 1, 0, 0, 0 ],
+        [0, 0, 1, 1, 0, 0 ],
+        [0, 0, 0, 1, 1, 1 ],
+        [0, 0, 0, 0, 0, 1 ],
     ] 
 
     marsChambers.forEach(room=> {

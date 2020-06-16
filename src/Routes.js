@@ -11,6 +11,7 @@ function Routes(props) {
       <BrowserRouter>
         <NavBar/>
         <Switch>
+          <Route exact path="/" render={props => <Login {...props} />} />
           <Route exact path="/login" render={props => <Login {...props} />} />
           <Route path="/registration" render={props => <Signup {...props} />} />
           <Route path="/game" render={props => <Main {...props} />} />

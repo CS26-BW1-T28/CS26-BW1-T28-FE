@@ -1,3 +1,6 @@
+.login-pg{
+    margin: 10% auto;
+}
 .login-pg form{
     background-image: url('../../images/terminal-screen.png');
     background-position: center center;
